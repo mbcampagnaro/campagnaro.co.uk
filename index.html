@@ -16,6 +16,10 @@
   .logo{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--accent-text);display:grid;place-items:center;font-weight:700;font-size:13px}
   .brand{font-weight:600}
   .brand small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+  .lang{margin-left:auto;display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+  .lang button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:600;padding:6px 12px;cursor:pointer;transition:background .15s,color .15s}
+  .lang button:hover{color:var(--text)}
+  .lang button.on{background:var(--accent);color:var(--accent-text)}
   h1{font-size:30px;line-height:1.2;margin:0 0 12px;letter-spacing:-.02em;max-width:620px}
   .lead{color:var(--muted);font-size:15px;max-width:560px;margin:0 0 24px}
   .btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
@@ -40,40 +44,96 @@
 <div class="wrap">
   <header>
     <div class="logo">MC</div>
-    <div class="brand">Mariano Campagnaro<small>Digital Services · London, UK</small></div>
+    <div class="brand">Mariano Campagnaro<small data-i18n="tagline">Digital Services · London, UK</small></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="pt">PT</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
   </header>
 
-  <h1>Digital services for businesses that want to run smarter.</h1>
-  <p class="lead">I help companies build and operate their digital side — online stores, websites, internal tools, automation and AI-powered workflows — with a practical, engineering-minded approach.</p>
+  <h1 data-i18n="h1">Digital services for businesses that want to run smarter.</h1>
+  <p class="lead" data-i18n="lead">I help companies build and operate their digital side — online stores, websites, internal tools, automation and AI-powered workflows — with a practical, engineering-minded approach.</p>
   <div class="btns">
-    <a class="btn primary" href="mailto:financeiro@campagnaro.com.br">Get in touch</a>
-    <a class="btn" href="#services">See services</a>
+    <a class="btn primary" href="mailto:financeiro@campagnaro.com.br" data-i18n="cta1">Get in touch</a>
+    <a class="btn" href="#services" data-i18n="cta2">See services</a>
   </div>
 
-  <h2 id="services">Services</h2>
+  <h2 id="services" data-i18n="services">Services</h2>
   <div class="grid">
-    <div class="card"><h3>E-commerce</h3><p>Shopify stores, catalogue setup, integrations and operations for selling online.</p></div>
-    <div class="card"><h3>Websites &amp; landing pages</h3><p>Fast, clean sites that are easy to maintain and look good on every device.</p></div>
-    <div class="card"><h3>Internal tools &amp; dashboards</h3><p>Custom web apps to manage operations, data and teams in one place.</p></div>
-    <div class="card"><h3>Automation &amp; AI</h3><p>Workflows and AI assistants that cut repetitive work and speed up decisions.</p></div>
-    <div class="card"><h3>Digital signage</h3><p>In-store screens and media systems to display marketing content.</p></div>
-    <div class="card"><h3>Consulting</h3><p>Hands-on guidance on technology, tooling and digital strategy for small and mid-sized businesses.</p></div>
+    <div class="card"><h3 data-i18n="s1t">E-commerce</h3><p data-i18n="s1d">Shopify stores, catalogue setup, integrations and operations for selling online.</p></div>
+    <div class="card"><h3 data-i18n="s2t">Websites &amp; landing pages</h3><p data-i18n="s2d">Fast, clean sites that are easy to maintain and look good on every device.</p></div>
+    <div class="card"><h3 data-i18n="s3t">Internal tools &amp; dashboards</h3><p data-i18n="s3d">Custom web apps to manage operations, data and teams in one place.</p></div>
+    <div class="card"><h3 data-i18n="s4t">Automation &amp; AI</h3><p data-i18n="s4d">Workflows and AI assistants that cut repetitive work and speed up decisions.</p></div>
+    <div class="card"><h3 data-i18n="s5t">Digital signage</h3><p data-i18n="s5d">In-store screens and media systems to display marketing content.</p></div>
+    <div class="card"><h3 data-i18n="s6t">Consulting</h3><p data-i18n="s6d">Hands-on guidance on technology, tooling and digital strategy for small and mid-sized businesses.</p></div>
   </div>
 
-  <h2>About</h2>
+  <h2 data-i18n="about">About</h2>
   <div class="about">
-    <p>I'm a mechanical engineer by training and have spent years running the technology and e-commerce side of a family business group — from online stores and internal platforms to media systems and process automation.</p>
-    <p>That means I build things that have to work day to day, not just look good in a demo.</p>
+    <p data-i18n="a1">I'm a mechanical engineer by training and have spent years running the technology and e-commerce side of a family business group — from online stores and internal platforms to media systems and process automation.</p>
+    <p data-i18n="a2">That means I build things that have to work day to day, not just look good in a demo.</p>
   </div>
 
-  <h2>Contact</h2>
+  <h2 data-i18n="contact">Contact</h2>
   <div class="contact">
-    <p style="margin:0 0 6px">Have a project in mind? Send me an email and I'll get back to you.</p>
+    <p style="margin:0 0 6px" data-i18n="c1">Have a project in mind? Send me an email and I'll get back to you.</p>
     <a href="mailto:financeiro@campagnaro.com.br">financeiro@campagnaro.com.br</a>
   </div>
 
   <footer>© <span id="y"></span> Mariano Campagnaro · campagnaro.co.uk</footer>
 </div>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script>
+(function(){
+  var T={
+    en:{
+      tagline:"Digital Services · London, UK",
+      h1:"Digital services for businesses that want to run smarter.",
+      lead:"I help companies build and operate their digital side — online stores, websites, internal tools, automation and AI-powered workflows — with a practical, engineering-minded approach.",
+      cta1:"Get in touch",cta2:"See services",services:"Services",
+      s1t:"E-commerce",s1d:"Shopify stores, catalogue setup, integrations and operations for selling online.",
+      s2t:"Websites & landing pages",s2d:"Fast, clean sites that are easy to maintain and look good on every device.",
+      s3t:"Internal tools & dashboards",s3d:"Custom web apps to manage operations, data and teams in one place.",
+      s4t:"Automation & AI",s4d:"Workflows and AI assistants that cut repetitive work and speed up decisions.",
+      s5t:"Digital signage",s5d:"In-store screens and media systems to display marketing content.",
+      s6t:"Consulting",s6d:"Hands-on guidance on technology, tooling and digital strategy for small and mid-sized businesses.",
+      about:"About",
+      a1:"I'm a mechanical engineer by training and have spent years running the technology and e-commerce side of a family business group — from online stores and internal platforms to media systems and process automation.",
+      a2:"That means I build things that have to work day to day, not just look good in a demo.",
+      contact:"Contact",c1:"Have a project in mind? Send me an email and I'll get back to you.",
+      title:"Mariano Campagnaro — Digital Services"
+    },
+    pt:{
+      tagline:"Serviços Digitais · Londres, Reino Unido",
+      h1:"Serviços digitais para empresas que querem operar melhor.",
+      lead:"Ajudo empresas a construir e operar o lado digital do negócio — lojas virtuais, sites, ferramentas internas, automação e fluxos com IA — com uma abordagem prática, de engenheiro.",
+      cta1:"Fale comigo",cta2:"Ver serviços",services:"Serviços",
+      s1t:"E-commerce",s1d:"Lojas Shopify, montagem de catálogo, integrações e operação de vendas online.",
+      s2t:"Sites e landing pages",s2d:"Sites rápidos e limpos, fáceis de manter e bonitos em qualquer tela.",
+      s3t:"Ferramentas internas e dashboards",s3d:"Aplicativos web sob medida para gerir operação, dados e equipes em um só lugar.",
+      s4t:"Automação e IA",s4d:"Fluxos e assistentes de IA que eliminam trabalho repetitivo e aceleram decisões.",
+      s5t:"Mídia indoor",s5d:"Telas e sistemas de mídia para exibir conteúdo de marketing no ponto de venda.",
+      s6t:"Consultoria",s6d:"Orientação prática em tecnologia, ferramentas e estratégia digital para pequenas e médias empresas.",
+      about:"Sobre",
+      a1:"Sou engenheiro mecânico de formação e há anos cuido da tecnologia e do e-commerce de um grupo empresarial familiar — de lojas virtuais e plataformas internas a sistemas de mídia e automação de processos.",
+      a2:"Ou seja, construo coisas que precisam funcionar no dia a dia, não só ficar bonitas numa demonstração.",
+      contact:"Contato",c1:"Tem um projeto em mente? Me envie um e-mail e eu retorno.",
+      title:"Mariano Campagnaro — Serviços Digitais"
+    }
+  };
+  function setLang(l){
+    var d=T[l]||T.en;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(d[k])el.textContent=d[k];});
+    document.documentElement.lang=l==='pt'?'pt-BR':'en';
+    document.title=d.title;
+    document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===l);});
+    try{localStorage.setItem('lang',l)}catch(e){}
+  }
+  var saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+  var initial=saved||((navigator.language||'').toLowerCase().indexOf('pt')===0?'pt':'en');
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'))});});
+  setLang(initial);
+  document.getElementById('y').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
